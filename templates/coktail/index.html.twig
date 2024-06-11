@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coktail index{% endblock %}
+
+{% block body %}
+    <h1>Coktail index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Categories</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for coktail in coktails %}
+            <tr>
+                <td>{{ coktail.name }}</td>
+                <td>
+                    {%  for i in coktail.ingredients %}
+                        {{i.name}} &nbsp;
+                    {%  endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('app_coktail_show', {'id': coktail.id}) }}" class=" btn btn-primary">show</a>
+                    <a href="{{ path('app_coktail_edit', {'id': coktail.id}) }}" class=" btn btn-primary">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_coktail_new') }}" class="btn btn-success">Create new</a>
+{% endblock %}

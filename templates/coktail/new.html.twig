@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Coktail{% endblock %}
+
+{% block body %}
+    <h1>Create new Coktail</h1>
+<div class="col-5 m-5" >
+    {{ include('coktail/_form.html.twig') }}
+
+    <a href="{{ path('app_coktail_index') }}" class="btn btn-info mt-2">back to list</a>
+</div>
+    <script>
+        $(document).ready(function() {
+            $('#coktail_Ingredients').select2();
+        });
+    </script>
+
+{% endblock %}
+
+

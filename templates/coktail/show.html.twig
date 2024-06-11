@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coktail{% endblock %}
+
+{% block body %}
+    <h1>Coktail</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>name</th>
+                <td>{{ coktail.name }}</td>
+            </tr>
+            <tr>
+                <th>Ingredients</th>
+                <td>{%  for i in coktail.ingredients %}
+                        {{i.name}} &nbsp;
+                    {%  endfor %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_coktail_index') }}">back to list</a>
+
+    <a href="{{ path('app_coktail_edit', {'id': coktail.id}) }}">edit</a>
+
+    {{ include('coktail/_delete_form.html.twig') }}
+{% endblock %}
